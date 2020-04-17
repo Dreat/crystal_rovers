@@ -1,6 +1,19 @@
-# TODO: Write documentation for `Rovers`
-module Rovers
-  VERSION = "0.1.0"
+require "rover"
+class Store
+    def self.rovers()
+        @@rovers || (@@rovers = {} of String => Rover)
+    end
 
-  # TODO: Put your code here
+    def self.create(name)
+        @@rovers[name] = Rover.new()
+    end
+
+    def self.delete(name)
+        @@rovers.delete(name)
+    end
+
+    def self.get(name)
+        @@rovers[name]
+    end
+
 end
